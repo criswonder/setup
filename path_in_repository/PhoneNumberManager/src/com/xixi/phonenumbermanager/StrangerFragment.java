@@ -114,47 +114,16 @@ public class StrangerFragment extends Fragment {
 
 		try {
 			Uri uri = Uri.parse(SMS_URI_ALL);
-			String[] projection = new String[] { "address", "count(address) as fuck" };
-			Cursor cur = getActivity().getContentResolver().query(uri, projection, "1=1  )group by address--", null, "date desc");		// 获取手机内部短信
+			String[] projection = new String[] { "replace(replace(address,'+86',''),' ','') as phoneNum","type", "count(address) as fuck" };
+			Cursor cur = getActivity().getContentResolver().query(uri, projection, "1=1  )group by phoneNum,type--", null, "date desc");		// 获取手机内部短信
 
 			if (cur.moveToFirst()) {
-				cur.getString(0);
-				cur.getString(1);
-				int index_Address = cur.getColumnIndex("address");
-				int index_Person = cur.getColumnIndex("person");
-				int index_Body = cur.getColumnIndex("body");
-				int index_Date = cur.getColumnIndex("date");
-				int index_Type = cur.getColumnIndex("type");
-
-				do {
-					String strAddress = cur.getString(index_Address);
-					int intPerson = cur.getInt(index_Person);
-					String strbody = cur.getString(index_Body);
-					long longDate = cur.getLong(index_Date);
-					int intType = cur.getInt(index_Type);
-
-					SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-					Date d = new Date(longDate);
-					String strDate = dateFormat.format(d);
-
-					String strType = "";
-					if (intType == 1) {
-						strType = "接收";
-					} else if (intType == 2) {
-						strType = "发送";
-					} else {
-						strType = "null";
-					}
-
-					smsBuilder.append("[ ");
-					smsBuilder.append(strAddress + ", ");
-					smsBuilder.append(intPerson + ", ");
-					smsBuilder.append(strbody + ", ");
-					smsBuilder.append(strDate + ", ");
-					smsBuilder.append(strType);
-					smsBuilder.append(" ]\n\n");
-					Log.i("sms", smsBuilder.toString());
-				} while (cur.moveToNext());
+				do{
+				String address = cur.getString(0);
+				String type= cur.getString(1);
+				String addressCount = cur.getString(2);
+				Log.d("readSms", address+",count="+addressCount+",type="+type);
+				}while(cur.moveToNext());
 
 				if (!cur.isClosed()) {
 					cur.close();
