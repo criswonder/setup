@@ -7,6 +7,14 @@ public class Contact {
 	private int smsCounter;
 	private int callLogCounter;
 	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("name=").append(name).append(",phoneNum=").append(phoneNum)
+		.append(",smsCounter=").append(smsCounter+"").append(",callLogCounter=").append(callLogCounter);
+		return sb.toString();
+	}
+	
 	public String getPhoneNum() {
 		return phoneNum;
 	}
