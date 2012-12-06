@@ -1,11 +1,15 @@
-package com.xixi.phonenumbermanager;
+package com.xixi.phonenumbermanager.utils;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
@@ -19,6 +23,8 @@ import android.provider.ContactsContract.CommonDataKinds.Photo;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.xixi.phonenumbermanager.R;
+import com.xixi.phonenumbermanager.XxApplication;
 import com.xixi.phonenumbermanager.entity.Contact;
 
 public class DataHelper {
@@ -219,5 +225,87 @@ public class DataHelper {
 			
 		}
 	}
+	/**
+	 * Delete callLogs maybe need backup calllogs
+	 * @param phoneNum
+	 * @return
+	 */
+	public static boolean deleteCallLog(String num,boolean needBackUp){
+		//TODO
+		String nums[] = new String[]{num};
+		ContentResolver resv = mContext.getContentResolver();
+		Uri uri = CallLog.Calls.CONTENT_URI;
+		ContentValues values = new ContentValues();
+		values.put("mark_deleted", 1);
+//		int uRows = resv.update(uri, values, CallLog.Calls.NUMBER+"=?", nums);
+		if(needBackUp){
+			Cursor original  = resv.query(Uri.withAppendedPath(CallLog.Calls.CONTENT_FILTER_URI, num), 
+					new String[]{CallLog.Calls.DATE,
+									CallLog.Calls.DURATION,CallLog.Calls.TYPE,CallLog.Calls._ID
+					}, null	, null, null);
+			if(original!=null){
+				int i=1;
+				while(original.moveToNext()){
+					original.getCount();
+					ContentValues cvalues = new ContentValues();
+					cvalues.put(CallLog.Calls.NUMBER, num);
+					cvalues.put(CallLog.Calls.DATE, original.getLong(0));
+					cvalues.put(CallLog.Calls.DURATION, original.getInt(1));
+					cvalues.put(CallLog.Calls.TYPE, original.getInt(2));
+					cvalues.put(CallLog.Calls._ID, original.getInt(3));
+					Calendar cal = Calendar.getInstance(Locale.CHINA);
+					cal.setTimeInMillis(cvalues.getAsLong(CallLog.Calls.DATE));
+//					Date date = cal.getTime();
+//					String str = cal.get(Calendar.YEAR)+"/"+cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.DAY_OF_MONTH)+" " +cal.get(Calendar.MINUTE) +":"+cal.get(Calendar.SECOND);
+					resv.insert(Uri.parse(LocalContentProvider.bak_uri.toString()+"/callLogs"), cvalues);
+					i++;
+					
+				}
+//				if(original.moveToFirst()){
+//					do{
+//						original.getCount();
+//						ContentValues cvalues = new ContentValues();
+//						cvalues.put(CallLog.Calls.NUMBER, num);
+//						cvalues.put(CallLog.Calls.DURATION, original.getInt(0));
+//						cvalues.put(CallLog.Calls.DATE, original.getInt(1));
+//						
+//						resv.insert(Uri.parse(LocalContentProvider.bak_uri.toString()+"/callLogs"), cvalues);
+//					}while(original.moveToNext());
+//					
+//				}
+				
+			}
+		}else{
+			
+		}
+		int rows = mContext.getContentResolver().delete(CallLog.Calls.CONTENT_URI, CallLog.Calls.NUMBER+"=?", nums);
+		return false;
+	}
+	public static boolean deleteSms(String num,boolean needBackUp){
+		return false;
+	}
 
+	public static void recover(String mPhoneNum) {
+		ContentResolver resv = mContext.getContentResolver();
+		Cursor c1 = resv.query(Uri.parse(LocalContentProvider.bak_uri.toString()+"/callLogs"), 
+						new String[]{CallLog.Calls.DURATION,CallLog.Calls.DATE,CallLog.Calls._ID,CallLog.Calls.TYPE},
+						"number=?", new String[]{mPhoneNum	}, null);
+		if(c1!=null){
+			int i=1;
+			while(c1.moveToNext()){
+				ContentValues values = new ContentValues();
+				values.put(CallLog.Calls.NUMBER, mPhoneNum);
+				values.put(CallLog.Calls.DURATION, c1.getInt(0));
+				values.put(CallLog.Calls.DATE, c1.getLong(1));
+				values.put(CallLog.Calls._ID, c1.getLong(2));
+				values.put(CallLog.Calls.TYPE, c1.getInt(3));
+				resv = mContext.getContentResolver();
+				c1.getCount();
+				resv.insert(CallLog.Calls.CONTENT_URI, values);
+				Log.i("recoverSuccessful", ""+i);
+				i++;
+			}
+			
+		}
+	}
 }
