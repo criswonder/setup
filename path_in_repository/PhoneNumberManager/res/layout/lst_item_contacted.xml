@@ -2,40 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="3dip"
     android:orientation="vertical" >
-
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:paddingLeft="7dip" >
+
         <TextView
-			android:text="号码："
+            android:id="@+id/tv_name"
+            style="@style/list_item_name_and_phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="毛洪云" />
+
         <TextView
             android:id="@+id/tv_phoneNum"
+            style="@style/list_item_name_and_phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-<TextView
-			android:text="通话时间："
+            android:layout_height="wrap_content"
+            android:text="（15088999999）" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="7dip" >
+
+        <TextView
+            style="@style/list_item_calltime_line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="通话时间：" />
+
         <TextView
             android:id="@+id/tv_phoneTotalTime"
+            style="@style/list_item_calltime_line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-<TextView
-			android:text="短信数目："
+            android:layout_height="wrap_content"
+            android:text="1分35秒" />
+
+        <TextView
+            style="@style/list_item_calltime_line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dip"
+            android:text="短信数目：" />
+
         <TextView
             android:id="@+id/tv_phoneSmsNumbers"
+            style="@style/list_item_calltime_line"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="200条" />
     </LinearLayout>
+
 </LinearLayout>

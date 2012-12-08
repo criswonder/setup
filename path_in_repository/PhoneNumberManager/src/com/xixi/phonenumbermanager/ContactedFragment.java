@@ -1,5 +1,6 @@
 package com.xixi.phonenumbermanager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -50,7 +51,8 @@ public class ContactedFragment extends Fragment implements OnClickListener {
 		DataHelper.getStrangers();
 		DataHelper.getSms();
 		
-		mContacts = DataHelper.contactedContacts;
+		mContacts  = new ArrayList<Contact>();
+		mContacts.addAll(DataHelper.mContactedContacts.values());
 		View fuck = View.inflate(getActivity(), R.layout.activity_contacted, null);
 		mlst_v = (ListView)fuck.findViewById(R.id.lst_main);
 		mlst_v.setAdapter(new ContactLstAdapter());
@@ -131,13 +133,14 @@ public class ContactedFragment extends Fragment implements OnClickListener {
 		if(v.getId()==R.id.btn_delete_calllog){
 			DataHelper.deleteCallLog(mPhoneNum, true);
 		}else if(v.getId()==R.id.btn_delete_sms){
-			
+			DataHelper.deleteSms(mPhoneNum, true);
 		}else if(v.getId()==R.id.btn_sms){
 			
 		}else if(v.getId()==R.id.btn_call){
 			
 		}else if(v.getId()==R.id.btn_recover){
-			DataHelper.recover(mPhoneNum);
+//			DataHelper.recoverCallLogs(mPhoneNum);
+			DataHelper.recoverSmss(mPhoneNum);
 			
 		}
 	}

@@ -25,13 +25,15 @@ public class LocalContentProvider extends ContentProvider {
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_CALLLOG_BAK = "calllog_bak";
     private static final String TABLE_CALLLOG_BAK1 = "sms_bak";
+    private static final String TABLE_CALLLOG_BAK2 = "contact_bak";
     private static HashMap<String, String> sNotesProjectionMap;
     private static final UriMatcher sUriMatcher;
     public static final Uri bak_uri = Uri.parse("content://com.xixi.pnm");
     public static final String authority="com.xixi.pnm";
 	private static final int CALL_LOGS = 1;
-	private static final int SMS_S = 3;
 	private static final int CALL_LOG_ITEM = 2;
+	private static final int SMS_S = 3;
+	private static final int CONTACTS = 4;
     /**
      * This class helps open, create, and upgrade the database file.
      */
@@ -61,8 +63,14 @@ public class LocalContentProvider extends ContentProvider {
         			"body" + " INTEGER" +
 
         			");";
+        	String str2 = "CREATE TABLE " + TABLE_CALLLOG_BAK2 + " (" +
+        			Calls._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+        			"number TEXT," +
+        			"name" + " INTEGER" +
+        			");";
             db.execSQL(str);
             db.execSQL(str1);
+            db.execSQL(str2);
         }
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -91,6 +99,10 @@ public class LocalContentProvider extends ContentProvider {
         	  qb.setTables(TABLE_CALLLOG_BAK1);
               qb.setProjectionMap(sNotesProjectionMap);
               break;
+        case CONTACTS:
+        	qb.setTables(TABLE_CALLLOG_BAK2);
+        	qb.setProjectionMap(sNotesProjectionMap);
+        	break;
         default:
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
@@ -127,7 +139,10 @@ public class LocalContentProvider extends ContentProvider {
         	table = TABLE_CALLLOG_BAK;
         }else if(sUriMatcher.match(uri)==SMS_S){
         	table = TABLE_CALLLOG_BAK1;
-        }else{
+        }else if(sUriMatcher.match(uri)==CONTACTS){
+        	table = TABLE_CALLLOG_BAK2;
+        }
+        else{
         	throw new IllegalArgumentException("Unknown URI " + uri);
         }
         ContentValues values;
@@ -157,6 +172,7 @@ public class LocalContentProvider extends ContentProvider {
         sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
        sUriMatcher.addURI(authority, "callLogs", CALL_LOGS);
        sUriMatcher.addURI(authority, "smss", SMS_S);
+       sUriMatcher.addURI(authority, "contacts", CONTACTS);
        sUriMatcher.addURI(authority, "callLogs/#", CALL_LOG_ITEM);
     }
 }
