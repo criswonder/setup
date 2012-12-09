@@ -4,26 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemLongClickListener;
 
 import com.xixi.phonenumbermanager.entity.Contact;
 import com.xixi.phonenumbermanager.utils.DataHelper;
+import com.xixi.phonenumbermanager.utils.ViewHelper;
 
-public class StrangerFragment extends Fragment implements OnClickListener {
+public class StrangerFragment extends Fragment implements OnClickListener, IMyClicker {
 	private ListView mlst_v;
 	private String[] contactedPhoneNumbers;
 	private String[] notContactedPhoneNumbers;
@@ -109,8 +113,10 @@ public class StrangerFragment extends Fragment implements OnClickListener {
 		if(TextUtils.isEmpty(mPhoneNum))
 			return;
 		if(v.getId()==R.id.btn_delete_contact){
-			DataHelper.deleteContact(mName,mPhoneNum, true);
+//			DataHelper.deleteContact(mName,mPhoneNum, true);
+			ViewHelper.performClick(this,v.getId());
 		}else if(v.getId()==R.id.btn_delete_sms){
+			
 		}else if(v.getId()==R.id.btn_sms){
 			Intent it = new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:"+mPhoneNum));
 	        it.putExtra("sms_body", "");
@@ -124,5 +130,10 @@ public class StrangerFragment extends Fragment implements OnClickListener {
 			
 		}
 	}
-
+	@Override
+	public void doClick(int i){
+		if(1==1)
+			return;
+		DataHelper.deleteContact(mName,mPhoneNum, true);
+	}
 }

@@ -22,8 +22,9 @@ import android.widget.TextView;
 
 import com.xixi.phonenumbermanager.entity.Contact;
 import com.xixi.phonenumbermanager.utils.DataHelper;
+import com.xixi.phonenumbermanager.utils.ViewHelper;
 
-public class ContactedFragment extends Fragment implements OnClickListener {
+public class ContactedFragment extends Fragment implements OnClickListener, IMyClicker {
 
 	private int mColorRes = -1;
 	private Context mContext;
@@ -133,9 +134,9 @@ public class ContactedFragment extends Fragment implements OnClickListener {
 		if(TextUtils.isEmpty(mPhoneNum))
 			return;
 		if(v.getId()==R.id.btn_delete_calllog){
-			DataHelper.deleteCallLog(mPhoneNum, true);
+			ViewHelper.performClick(this, v.getId());
 		}else if(v.getId()==R.id.btn_delete_sms){
-			DataHelper.deleteSms(mPhoneNum, true);
+			ViewHelper.performClick(this, v.getId());
 		}else if(v.getId()==R.id.btn_sms){
 			Intent it = new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:"+mPhoneNum));
 	        it.putExtra("sms_body", "");
@@ -149,6 +150,15 @@ public class ContactedFragment extends Fragment implements OnClickListener {
 //			DataHelper.recoverCallLogs(mPhoneNum);
 			DataHelper.recoverSmss(mPhoneNum);
 			
+		}
+	}
+
+	@Override
+	public void doClick(int i) {
+		if(i==R.id.btn_delete_calllog){
+			DataHelper.deleteCallLog(mPhoneNum, true);
+		}else if(i==R.id.btn_delete_sms){
+			DataHelper.deleteSms(mPhoneNum, true);
 		}
 	}
 
