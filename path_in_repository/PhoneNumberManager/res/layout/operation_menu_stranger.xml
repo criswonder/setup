@@ -1,38 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="40dip"
-    android:orientation="horizontal" >
-      <Button android:layout_weight="1.5"
-        	android:id="@+id/btn_delete_contact"
-        	android:layout_width="wrap_content"
-        	android:layout_height="match_parent"
-        	android:gravity="center"
-        	android:text="删除联系人"
-        />
-    <Button 
-        	android:id="@+id/btn_call"
-        	android:layout_weight="1"
-        	android:layout_width="wrap_content"
-        	android:layout_height="match_parent"
-        	android:text="通话"
-        	android:gravity="center"
-        />
-    <Button 
-        	android:id="@+id/btn_sms"
-        	android:layout_weight="1"
-        	android:layout_width="wrap_content"
-        	android:layout_height="match_parent"
-        	android:text="短信"
-        	android:gravity="center"
-        />
-    <Button 
-        	android:id="@+id/btn_recover"
-        	android:layout_weight="1"
-        	android:layout_width="wrap_content"
-        	android:layout_height="match_parent"
-        	android:text="恢复"
-        	android:gravity="center"
-        />
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="260dip"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_four_round_corner"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/btn_delete_contact"
+            style="@style/menu_item_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="删除联系人" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/btn_call"
+            style="@style/menu_item_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="通话" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/btn_sms"
+            style="@style/menu_item_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="短信" />
+
+        <Button
+            android:id="@+id/btn_recover"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="恢复"
+            android:visibility="gone" />
+    </LinearLayout>
 
 </LinearLayout>

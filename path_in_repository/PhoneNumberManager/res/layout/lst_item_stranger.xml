@@ -7,13 +7,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+        android:orientation="horizontal" 
+        android:paddingLeft="@dimen/lst_item_paddingLeft"
+        >
 		<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/list_item_name_and_phone"
             android:text="姓名：" />
         <TextView
             android:id="@+id/tv_name"
+            android:text="AnDYl"
+            style="@style/list_item_name_and_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -21,16 +26,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/lst_item_paddingLeft"
         android:orientation="horizontal" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/list_item_calltime_line"
             android:text="号码：" />
 
         <TextView
             android:id="@+id/tv_phoneNum"
             android:layout_width="wrap_content"
+            style="@style/list_item_calltime_line"
+            android:text="1899999999"
             android:layout_height="wrap_content" />
     </LinearLayout>
 

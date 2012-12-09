@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
@@ -135,8 +137,13 @@ public class ContactedFragment extends Fragment implements OnClickListener {
 		}else if(v.getId()==R.id.btn_delete_sms){
 			DataHelper.deleteSms(mPhoneNum, true);
 		}else if(v.getId()==R.id.btn_sms){
-			
+			Intent it = new Intent(Intent.ACTION_SENDTO,Uri.parse("smsto:"+mPhoneNum));
+	        it.putExtra("sms_body", "");
+//	        it.setType("vnd.android-dir/mms-sms");
+	        startActivity(it);
 		}else if(v.getId()==R.id.btn_call){
+			Intent intent =  new Intent("android.intent.action.DIAL", Uri.parse("tel:"+mPhoneNum));
+			mContext.startActivity(intent);
 			
 		}else if(v.getId()==R.id.btn_recover){
 //			DataHelper.recoverCallLogs(mPhoneNum);
