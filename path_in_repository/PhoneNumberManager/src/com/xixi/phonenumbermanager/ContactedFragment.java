@@ -6,6 +6,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,9 +15,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,10 +34,10 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 	private Context mContext;
 	public static List<Contact> mContacts;
 
-	
+
 	private ListView mlst_v;
 	private String mPhoneNum;
-	
+
 	public ContactedFragment() {
 		this(R.color.white);
 	}
@@ -53,7 +57,7 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 		DataHelper.readCallLogs();
 		DataHelper.getStrangers();
 		DataHelper.getSms();
-		
+
 		mContacts  = new ArrayList<Contact>();
 		mContacts.addAll(DataHelper.mContactedContacts.values());
 		View fuck = View.inflate(getActivity(), R.layout.activity_contacted, null);
@@ -70,7 +74,7 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 				AlertDialog dialog = builder.create();
 				dialog.show();
 				dialog.setContentView(R.layout.operation_menu_contacted);
-				
+
 				dialog.findViewById(R.id.btn_delete_calllog).setOnClickListener(ContactedFragment.this);
 				dialog.findViewById(R.id.btn_delete_sms).setOnClickListener(ContactedFragment.this);
 				dialog.findViewById(R.id.btn_call).setOnClickListener(ContactedFragment.this);
@@ -82,13 +86,13 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 		return fuck;
 	}
 
-	
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
 		outState.putInt("mColorRes", mColorRes);
 	}
-	
+
 	 class ContactLstAdapter extends BaseAdapter{
 
 		@Override
@@ -122,11 +126,11 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 			tv_phoneTime.setText(con.getCallLogCounter()+"");
 			tv_smsTotalNumber.setText(con.getSmsCounter()+"");
 			tv_phoneNum.setText(con.getPhoneNum());
-			
+
 			return v;
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -145,21 +149,57 @@ public class ContactedFragment extends Fragment implements OnClickListener, IMyC
 		}else if(v.getId()==R.id.btn_call){
 			Intent intent =  new Intent("android.intent.action.DIAL", Uri.parse("tel:"+mPhoneNum));
 			mContext.startActivity(intent);
-			
+
 		}else if(v.getId()==R.id.btn_recover){
 //			DataHelper.recoverCallLogs(mPhoneNum);
 			DataHelper.recoverSmss(mPhoneNum);
-			
+
 		}
 	}
 
 	@Override
-	public void doClick(int i) {
+	public void doClick(final int i) {
+		AlertDialog.Builder  builder = new AlertDialog.Builder(mContext);
+        View v = View.inflate(mContext, R.layout.loading, null);
+        ImageView img = (ImageView)v.findViewById(R.id.loading);
+        Drawable d = getResources().getDrawable(R.drawable.progress_spin);
+        img.setImageResource(R.drawable.progress_spin);
+        Animation rotation = AnimationUtils.loadAnimation(mContext, R.anim.my_rotate);
+        rotation.setRepeatCount(Animation.INFINITE);
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+        dialog.setContentView(v);
+        img.startAnimation(rotation);
+
+        Thread th = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				long start = System.currentTimeMillis()+1100;
+				/*if(i==R.id.btn_delete_calllog){
+					DataHelper.deleteCallLog(mPhoneNum, true);
+				}else if(i==R.id.btn_delete_sms){
+					DataHelper.deleteSms(mPhoneNum, true);
+				}*/
+				while(System.currentTimeMillis()<start){
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				dialog.dismiss();
+			}
+		});
+        th.start();
+        /*
 		if(i==R.id.btn_delete_calllog){
 			DataHelper.deleteCallLog(mPhoneNum, true);
 		}else if(i==R.id.btn_delete_sms){
 			DataHelper.deleteSms(mPhoneNum, true);
 		}
+		*/
 	}
 
 }

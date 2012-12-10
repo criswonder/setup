@@ -11,7 +11,7 @@
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
-  limitations under the License.
+  limitations under the License.
 -->
 
 <resources>
@@ -22,5 +22,10 @@
     <dimen name="lst_item_paddingLeft">10dp</dimen>
 
     <integer name="num_cols">1</integer>
+
+    <dimen name="articleload_w">408.0px</dimen>
+    <dimen name="articleload_h">102.0px</dimen>
+    <dimen name="articleloadline_w">2.0px</dimen>
+    <dimen name="loadingsize">24.0px</dimen>
 
 </resources>
