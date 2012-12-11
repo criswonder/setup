@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/articleload_w"
+    android:layout_height="@dimen/articleload_h"
+    android:layout_gravity="center"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="@dimen/articleload_w"
+        android:layout_height="@dimen/articleload_h"
+        >
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="@dimen/articleload_h"
+            android:layout_height="@dimen/articleload_h"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+
+        <ImageView
+            android:id="@+id/loading_line"
+            android:layout_width="@dimen/articleloadline_w"
+            android:layout_height="fill_parent"
+            android:layout_toLeftOf="@id/close" />
+
+        <ImageView
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/loading_line"
+            android:gravity="center" android:baselineAlignBottom="true"
+            android:src="@drawable/progress_spin"
+            />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@id/loading"
+            android:gravity="right"
+            android:text="正在加载 ..."
+            android:textColor="@color/white"
+            android:textSize="@dimen/loadingsize" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="menuTopbar" format="reference" />
+    <attr name="menuTopbar_userIcon" format="reference" />
+    <attr name="menuTopbar_userName" format="reference" />
+    <attr name="menulist" format="reference" />
+    <attr name="menulistitem" format="reference" />
+    <attr name="menulistitem_menuName" format="reference" />
+    <attr name="listitem_userIcon" format="reference" />
+    <attr name="listitem_userName" format="reference" />
+    <attr name="listitem_content" format="reference" />
+    <attr name="listitem_content_more" format="reference" />
+</resources>

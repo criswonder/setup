@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="textColor">#ffffffff</color>
+    <color name="bgColor">#ff000000</color>
+    <color name="border_line">#ffd7dadc</color>
+    <color name="title_has_background">#ffffffff</color>
+    <color name="title_no_background">#ff815f3d</color>
+    <color name="content">#ff514331</color>
+    <color name="uesr_name">#ffbb9e83</color>
+    <color name="tag">#ff7d6042</color>
+    <color name="vote">#ff9e8c7b</color>
+    <color name="vote_active">#ffd45138</color>
+    <color name="floor">#ff88abda</color>
+    <color name="anonymity_user">#ffd8ccc2</color>
+    <color name="admin_user">#ff333333</color>
+    <color name="content_own_user">#ffd45138</color>
+    <color name="register_hint_color">#ffbbac9e</color>
+    <color name="white">#ffffffff</color>
+    <color name="transparent">#00000000</color>
+    <color name="gold">#ffb89766</color>
+    <color name="sending">#ffb5cff2</color>
+    <color name="pending">#fffdd770</color>
+    <color name="nopass">#fff6b5b1</color>
+    <color name="publish">#ff99cc99</color>
+    <color name="menu_item_selected">#33000000</color>
+    <color name="menu_selected">#ffe5e1d5</color>
+    <color name="Half_Translucte">#ff000000</color>
+    <color name="black">#ff000000</color>
+    <color name="background">#ffffffcc</color>
+    <color name="contentBackground">#ffffffff</color>
+    <color name="contentText">#ff000000</color>
+    <color name="stampText">#ffffffff</color>
+</resources>

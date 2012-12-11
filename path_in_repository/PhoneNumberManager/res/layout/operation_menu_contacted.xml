@@ -13,39 +13,45 @@
 
         <TextView
             android:id="@+id/btn_delete_calllog"
+            style="@style/menu_item_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/menu_item_style"
             android:text="删除通话纪录" />
-	<View android:background="@color/white" 
-	     android:layout_width="match_parent"
-	     android:layout_height="1px"
-	    />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/img14" />
+
         <TextView
             android:id="@+id/btn_delete_sms"
+            style="@style/menu_item_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/menu_item_style"
             android:text="删除短信" />
-<View android:background="@color/white" 
-	     android:layout_width="match_parent"
-	     android:layout_height="1px"
-	    />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/img14" />
+
         <TextView
             android:id="@+id/btn_call"
+            style="@style/menu_item_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/menu_item_style"
             android:text="通话" />
-<View android:background="@color/white" 
-	     android:layout_width="match_parent"
-	     android:layout_height="1px"
-	    />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@drawable/img14" />
+
         <TextView
             android:id="@+id/btn_sms"
+            style="@style/menu_item_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/menu_item_style"
             android:text="短信" />
 
         <Button

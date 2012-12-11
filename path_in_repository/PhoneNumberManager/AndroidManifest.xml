@@ -16,8 +16,8 @@
     <application
         android:name=".XxApplication"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" 
-       android:theme="@style/Theme.Sherlock" 
+        android:label="@string/app_name"
+       android:theme="@style/ExampleTheme"
         >
 <!--        android:theme="@style/Theme.Sherlock"  -->
 <!--         android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->

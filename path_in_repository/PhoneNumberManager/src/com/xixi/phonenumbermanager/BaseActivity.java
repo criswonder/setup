@@ -44,21 +44,21 @@ public class BaseActivity extends SlidingFragmentActivity {
 		sm.setShadowDrawable(R.drawable.shadow);
 		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
 		sm.setFadeDegree(0.35f);
-		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-//		switch (item.getItemId()) {
-//		case android.R.id.home:
-//			toggle();
-//			return true;
-//		case R.id.github:
-//			Util.goToGitHub(this);
-//			return true;
-//		}
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			toggle();
+			return true;
+		/*case R.id.github:
+			Util.goToGitHub(this);
+			return true;*/
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -68,7 +68,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		return true;
 	}
 
-	public class BasePagerAdapter extends FragmentPagerAdapter {
+	/*public class BasePagerAdapter extends FragmentPagerAdapter {
 		private List<Fragment> mFragments = new ArrayList<Fragment>();
 		private ViewPager mPager;
 
@@ -94,6 +94,6 @@ public class BaseActivity extends SlidingFragmentActivity {
 		public int getCount() {
 			return mFragments.size();
 		}
-	}
+	}*/
 
 }
