@@ -1,61 +1,50 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <style name="AppTheme" parent="android:Theme.Light" />
-    <!-- <style name="myTheme" parent=""></style> -->
-    <style name="ExampleTheme" parent="Theme.Sherlock.Light.DarkActionBar">
-        <item name="homeAsUpIndicator">@drawable/new_indicator</item>
-        <item name="android:homeAsUpIndicator">@drawable/new_indicator</item>
-        <item name="actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
-     	<item name="android:actionBarStyle">@style/Widget.MyTheme.ActionBar</item>
-        <item name="menuTopbar">@style/MenuTopbar</item>
-        <item name="menuTopbar_userIcon">@style/MenuTopbar_userIcon</item>
-        <item name="menuTopbar_userName">@style/MenuTopbar_userName</item>
-        <item name="menulist">@style/MenuList</item>
-        <item name="menulistitem">@style/MenuListItem</item>
-        <item name="menulistitem_menuName">@style/MenuListItem_menuName</item>
-        <item name="listitem_userIcon">@style/ListItem_userIcon</item>
-        <item name="listitem_userName">@style/ListItem_userName</item>
-        <item name="listitem_content">@style/ListItem_content</item>
-        <item name="listitem_content_more">@style/ListItem_content_more</item>
-         <item name="android:textColor">@color/black</item>
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ 
+    <style name="Theme" parent="android:Theme">
+        <item name="android:background">@null</item>
+        <item name="android:windowNoTitle">true</item>
     </style>
-
-    <style name="list_item_name_and_phone">
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="Widget.MyTheme.ActionBar" parent="Widget.Sherlock.ActionBar">
-        <item name="android:background">@drawable/top_bar_bg</item>
-        <item name="background">@drawable/top_bar_bg</item>
-    </style>
-
-    <style name="actionbar_bg">
-        <item name="android:background">@drawable/menu_bg</item>
-        <item name="background">@drawable/menu_bg</item>
-    </style>
-
-    <style name="list_item_calltime_line">
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="menu_item_style">
-        <item name="android:textSize">20sp</item>
-        <item name="android:minHeight">40dip</item>
+     
+    <style name="text_title">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
         <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/black</item>
     </style>
-
-    <style name="fuckTheme" parent="Sherlock.__Theme">
-        <item name="menuTopbar">@style/MenuTopbar</item>
-        <item name="menuTopbar_userIcon">@style/MenuTopbar_userIcon</item>
-        <item name="menuTopbar_userName">@style/MenuTopbar_userName</item>
-        <item name="menulist">@style/MenuList</item>
-        <item name="menulistitem">@style/MenuListItem</item>
-        <item name="menulistitem_menuName">@style/MenuListItem_menuName</item>
-        <item name="listitem_userIcon">@style/ListItem_userIcon</item>
-        <item name="listitem_userName">@style/ListItem_userName</item>
-        <item name="listitem_content">@style/ListItem_content</item>
-        <item name="listitem_content_more">@style/ListItem_content_more</item>
+     
+    <style name="text_option">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
-
+     
+    <style name="layout_wrap">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+     
+    <style name="layout_fill">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+    </style>
+     
+    <style name="layout_f_w">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+     
+    <style name="h_line">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">2dip</item>
+        <item name="android:background">@color/red</item>
+    </style>
+     
+        <style name="indicator_style">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">4dip</item>
+        <item name="android:background">@color/red</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+     
 </resources>

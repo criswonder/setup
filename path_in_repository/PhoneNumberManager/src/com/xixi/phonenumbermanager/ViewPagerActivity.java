@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
 
 import com.slidingmenu.lib.SlidingMenu;
 
@@ -20,11 +21,11 @@ public class ViewPagerActivity extends BaseActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		ViewPager vp = new ViewPager(this);
+		View v = View.inflate(getApplicationContext(), R.layout.activity_main, null);
+		setContentView(v);
+		ViewPager vp = (ViewPager)v.findViewById(R.id.viewPager);
 		vp.setId("VP".hashCode());
 		vp.setAdapter(new ColorPagerAdapter(getSupportFragmentManager()));
-		setContentView(vp);
 
 		vp.setOnPageChangeListener(new OnPageChangeListener() {
 			@Override
@@ -38,8 +39,12 @@ public class ViewPagerActivity extends BaseActivity {
 				switch (position) {
 				case 0:
 					getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+					findViewById(R.id.first_tab).setVisibility(View.VISIBLE);
+					findViewById(R.id.second_tab).setVisibility(View.INVISIBLE);
 					break;
 				default:
+					findViewById(R.id.first_tab).setVisibility(View.INVISIBLE);
+					findViewById(R.id.second_tab).setVisibility(View.VISIBLE);
 					getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
 					break;
 				}
