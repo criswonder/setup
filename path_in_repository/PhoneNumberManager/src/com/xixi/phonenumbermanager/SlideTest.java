@@ -2,7 +2,7 @@ package com.xixi.phonenumbermanager;
 
 import android.os.Bundle;
 
-import com.slidingmenu.lib.app.SlidingActivity;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 
 public class SlideTest extends SlidingActivity {
 	@Override

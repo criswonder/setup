@@ -1,11 +1,8 @@
 package com.xixi.phonenumbermanager;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import cn.mucang.android.wzlite.more.Car;
-import cn.mucang.android.wzlite.more.FeedBackListener;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -16,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -68,47 +64,47 @@ public class SampleListFragment extends ListFragment implements OnItemClickListe
 
 	@Override
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-		UMFeedbackService.openUmengFeedbackSDK(this);
-		
-		
-		FeedBackListener listener = new FeedBackListener() {
-		    @Override
-		    public void onSubmitFB(Activity activity) {
-		    	Map<String, String> contactMap = new HashMap<String, String>();
-		        int i=1;
-		        UMFeedbackService.setContactMap(contactMap);
-		       /* Map<String, String> remarkMap = new HashMap<String, String>();
-		        remarkMap.put("name", "mao");
-		        UMFeedbackService.setRemarkMap(remarkMap);*/
-		    }
-		    @Override
-		    public void onResetFB(Activity activity,
-		            Map<String, String> contactMap,
-		            Map<String, String> remarkMap) {
-		        // TODO Auto-generated method stub`
-		        // FB initialize itself,load other attribute
-		        // from local storage and set them
-		        /*EditText phoneText = (EditText) activity
-		                .findViewById(R.id.feedback_phone);
-		        EditText qqText = (EditText) activity
-		                .findViewById(R.id.feedback_qq);
-		        EditText nameText = (EditText) activity
-		                .findViewById(R.id.feedback_name);
-		        EditText emailText = (EditText) activity
-		                .findViewById(R.id.feedback_email);
-		        if (remarkMap != null) {
-		            nameText.setText(remarkMap.get("name"));
-		            emailText.setText(remarkMap
-		                    .get("email"));
-		        }
-		        if (contactMap != null) {
-		            phoneText.setText(contactMap
-		                    .get("phone"));
-		            qqText.setText(contactMap.get("qq"));
-		        }*/
-		    }
-		};
-		UMFeedbackService.setFeedBackListener(listener);   
-		break;
+//		UMFeedbackService.openUmengFeedbackSDK(this);
+//		
+//		
+//		FeedBackListener listener = new FeedBackListener() {
+//		    @Override
+//		    public void onSubmitFB(Activity activity) {
+//		    	Map<String, String> contactMap = new HashMap<String, String>();
+//		        int i=1;
+//		        UMFeedbackService.setContactMap(contactMap);
+//		       /* Map<String, String> remarkMap = new HashMap<String, String>();
+//		        remarkMap.put("name", "mao");
+//		        UMFeedbackService.setRemarkMap(remarkMap);*/
+//		    }
+//		    @Override
+//		    public void onResetFB(Activity activity,
+//		            Map<String, String> contactMap,
+//		            Map<String, String> remarkMap) {
+//		        // TODO Auto-generated method stub`
+//		        // FB initialize itself,load other attribute
+//		        // from local storage and set them
+//		        /*EditText phoneText = (EditText) activity
+//		                .findViewById(R.id.feedback_phone);
+//		        EditText qqText = (EditText) activity
+//		                .findViewById(R.id.feedback_qq);
+//		        EditText nameText = (EditText) activity
+//		                .findViewById(R.id.feedback_name);
+//		        EditText emailText = (EditText) activity
+//		                .findViewById(R.id.feedback_email);
+//		        if (remarkMap != null) {
+//		            nameText.setText(remarkMap.get("name"));
+//		            emailText.setText(remarkMap
+//		                    .get("email"));
+//		        }
+//		        if (contactMap != null) {
+//		            phoneText.setText(contactMap
+//		                    .get("phone"));
+//		            qqText.setText(contactMap.get("qq"));
+//		        }*/
+//		    }
+//		};
+//		UMFeedbackService.setFeedBackListener(listener);   
+//		break;
 	}
 }

@@ -2,6 +2,7 @@ package com.xixi.phonenumbermanager;
 
 import java.util.ArrayList;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,7 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 
-import com.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class ViewPagerActivity extends BaseActivity {
 
