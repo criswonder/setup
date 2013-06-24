@@ -11,6 +11,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
+import com.actionbarsherlock.view.SubMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class ViewPagerActivity extends BaseActivity {
@@ -55,20 +58,12 @@ public class ViewPagerActivity extends BaseActivity {
 		
 		vp.setCurrentItem(0);
 		getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-		setSlidingActionBarEnabled(true);
 	}
 
 	public class ColorPagerAdapter extends FragmentPagerAdapter {
 		
 		private ArrayList<Fragment> mFragments;
-
-		private final int[] COLORS = new int[] {
-			R.color.red,
-			R.color.green,
-			R.color.blue,
-			R.color.white,
-			R.color.black
-		};
+ 
 		
 		public ColorPagerAdapter(FragmentManager fm) {
 			super(fm);
@@ -88,6 +83,21 @@ public class ViewPagerActivity extends BaseActivity {
 			return mFragments.get(position);
 		}
 
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		SubMenu subMenu1 = menu.addSubMenu("Action Item");
+        subMenu1.add("拨打电话");
+        subMenu1.add("发送短信");
+        subMenu1.add("删除短信");
+
+        MenuItem subMenu1Item = subMenu1.getItem();
+        subMenu1Item.setIcon(R.drawable.ic_title_share_default);
+        subMenu1Item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+		super.onCreateOptionsMenu(menu);
+		return true;
 	}
 
 }
